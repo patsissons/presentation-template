@@ -17,6 +17,7 @@ require('spectacle/lib/themes/default/index.css');
 require('prismjs/themes/prism-tomorrow.css');
 require('bootstrap/dist/css/bootstrap.css');
 require('font-awesome/css/font-awesome.css');
+require('./style.css');
 
 // http://paletton.com/#uid=13n0u0kobpudpS7l8AYpAdhuX4D
 const theme = createTheme(
