@@ -6,12 +6,12 @@ var webpack = require('webpack');
 module.exports = {
   entry: [
     'babel-polyfill',
+    './index.html',
     './index'
   ],
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, 'docs'),
     filename: 'bundle.js',
-    publicPath: '/dist/'
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -28,7 +28,7 @@ module.exports = {
   module: {
     loaders: [{
       test: /\.md$/,
-      loader: 'html-loader!markdown-loader?gfm=false'
+      loader: 'raw-loader'
     }, {
       test: /\.jsx?$/,
       exclude: /node_modules/,
@@ -37,11 +37,14 @@ module.exports = {
       test: /\.css$/,
       loader: 'style-loader!css-loader'
     }, {
-      test: /\.(png|jpg|gif)$/,
-      loader: 'url-loader?limit=8192'
+      test: /\.(woff|woff2|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+      loader: 'file-loader?name=[name].[ext]'
     }, {
-      test: /\.svg$/,
-      loader: 'url-loader?limit=10000&mimetype=image/svg+xml'
+      test: /index\.html$/,
+      loader: 'file-loader?name=[name].[ext]'
+    }, {
+      test: /\.(png|jpg|gif)$/,
+      loader: 'url-loader?name=[name].[ext]'
     }]
   }
 };

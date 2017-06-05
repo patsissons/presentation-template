@@ -2,48 +2,36 @@
 import React from 'react';
 
 // Import Spectacle Core tags
-import {
-  Deck,
-  MarkdownSlides
-  // BlockQuote,
-  // Cite,
-  // Heading,
-  // ListItem,
-  // List,
-  // Quote,
-  // Slide,
-  // Text
-} from 'spectacle';
-
-// Import image preloader util
-import preloader from 'spectacle/lib/utils/preloader';
+import * as Tags from 'spectacle';
 
 // Import theme
 import createTheme from 'spectacle/lib/themes/default';
 
+// Import prismjs
+import 'prismjs';
+import 'prismjs/components/prism-jsx';
+
 // Require CSS
 require('normalize.css');
 require('spectacle/lib/themes/default/index.css');
+require('prismjs/themes/prism-tomorrow.css');
+require('bootstrap/dist/css/bootstrap.css');
+require('font-awesome/css/font-awesome.css');
 
+// http://paletton.com/#uid=13n0u0kobpudpS7l8AYpAdhuX4D
+const theme = createTheme(
+  {
+    primary: '#011317',
+    secondary: '#87D2E4',
+    tertiary: '#3F9BB0',
+    quartenary: '#216C7E'
+  },
+  {
+    primary: 'Montserrat',
+    secondary: 'Verdana'
+  },
+);
 
-const images = {
-  city: require('../assets/city.jpg'),
-  kat: require('../assets/kat.png'),
-  logo: require('../assets/formidable-logo.svg'),
-  markdown: require('../assets/markdown.png')
-};
-
-preloader(images);
-
-const theme = createTheme({
-  primary: 'white',
-  secondary: '#1F2022',
-  tertiary: '#03A9FC',
-  quartenary: '#CECECE'
-}, {
-  primary: 'Montserrat',
-  secondary: 'Helvetica'
-});
 
 export default class Presentation extends React.Component {
   render() {

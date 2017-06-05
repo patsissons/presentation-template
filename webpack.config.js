@@ -8,12 +8,12 @@ module.exports = {
   entry: [
     'webpack-hot-middleware/client',
     'babel-polyfill',
+    './index.html',
     './index'
   ],
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, 'docs'),
     filename: 'bundle.js',
-    publicPath: '/dist/'
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
@@ -22,7 +22,6 @@ module.exports = {
   module: {
     loaders: [{
       test: /\.md$/,
-      // loader: 'html-loader!markdown-loader?gfm=false'
       loader: 'raw-loader'
     }, {
       test: /\.jsx?$/,
@@ -48,23 +47,36 @@ module.exports = {
       include: __dirname
     }, {
       test: /\.css$/,
-      loaders: ['style-loader', 'raw-loader'],
-      include: __dirname
+      loader: 'style-loader!css-loader?sourceMap',
     }, {
-      test: /\.svg$/,
-      loader: 'url-loader?limit=10000&mimetype=image/svg+xml',
-      include: path.join(__dirname, 'assets')
+      test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
+      loader: 'url-loader?name=[name].[ext]&mimetype=application/font-woff'
+    }, {
+      test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,
+      loader: 'url-loader?name=[name].[ext]&mimetype=application/font-woff'
+    }, {
+      test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+      loader: 'url-loader?name=[name].[ext]&mimetype=application/octet-stream'
+    }, {
+      test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+      loader: 'file-loader?name=[name].[ext]'
+    }, {
+      test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+      loader: 'url-loader?name=[name].[ext]&mimetype=image/svg+xml'
+    }, {
+      test: /index\.html$/,
+      loader: 'file-loader?name=[name].[ext]'
     }, {
       test: /\.png$/,
-      loader: 'url-loader?mimetype=image/png',
+      loader: 'url-loader?name=[name].[ext]&mimetype=image/png',
       include: path.join(__dirname, 'assets')
     }, {
       test: /\.gif$/,
-      loader: 'url-loader?mimetype=image/gif',
+      loader: 'url-loader?name=[name].[ext]&mimetype=image/gif',
       include: path.join(__dirname, 'assets')
     }, {
       test: /\.jpg$/,
-      loader: 'url-loader?mimetype=image/jpg',
+      loader: 'url-loader?name=[name].[ext]&mimetype=image/jpg',
       include: path.join(__dirname, 'assets')
     }]
   }
