@@ -33,6 +33,18 @@ const theme = createTheme(
   },
 );
 
+// patch the default text color on some components
+theme.screen.components.code.color = theme.screen.colors.secondary;
+theme.screen.components.quote.color = theme.screen.colors.secondary;
+theme.screen.components.heading.h3.color = theme.screen.colors.secondary;
+theme.screen.components.heading.h4.color = theme.screen.colors.secondary;
+theme.screen.components.heading.h5.color = theme.screen.colors.secondary;
+theme.screen.components.heading.h6.color = theme.screen.colors.secondary;
+theme.screen.components.text.color = theme.screen.colors.secondary;
+
+// patch code pane default font size and padding
+theme.screen.components.codePane.pre.fontSize = theme.screen.components.code.fontSize;
+theme.screen.components.codePane.pre.padding = '10px';
 
 export default class Presentation extends React.Component {
   render() {
